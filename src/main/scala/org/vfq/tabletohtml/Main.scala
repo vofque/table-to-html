@@ -12,14 +12,9 @@ object Main extends App {
 
   val resultPath: String = IOUtil.replaceFileExtension(sourcePath, "html")
 
-  Reader(sourcePath, sourceEncoding) match {
-    case Some(reader) => {
-      reader.read() match {
-        case Some(table) =>
-          Writer(resultPath).write(table)
-        case None =>
-      }
+  Reader(sourcePath, sourceEncoding).foreach {
+    _.read().foreach {
+      Writer(resultPath).write(_)
     }
-    case None =>
   }
 }
