@@ -94,7 +94,10 @@ private[io] case class FixedLengthLineParser(input: String => String, output: St
     val iterator: Iterator[Option[Int]] = Iterator.continually {
       readUserColumnLimit(lineLength)
     }
-    iterator.dropWhile(_.isEmpty).next().get
+    iterator
+      .dropWhile(_.isEmpty)
+      .next()
+      .get
   }
 
   private def readUserColumnLimit(lineLength: Int): Option[Int] = {
