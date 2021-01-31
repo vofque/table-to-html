@@ -1,32 +1,25 @@
-## Описание
+## Description
 
-Реализованный проект - консольное Scala-приложение, считывающее таблицу из файла и генерирующее HTML-файл, содержащий эту таблицу.
+This is a test console Scala application, reading a table from a file and generating an HTML containing this table.
 
-Поддерживаемые форматы входных файлов:
-- **.csv** с запятыми в качестве разделителя
-- **.prn** с фиксированным размером колонок
+Supported input file formats:
+- **.csv** with comma delimiters
+- **.prn** with fixed column width
 
-Для поддержки нового формата необходимо создать подкласс класса `org.vfq.tabletohtml.io.Reader` и зарегистрировать его в `Reader.apply`.
+To support a new input file format you should createa subclass of `org.vfq.tabletohtml.io.Reader` and register it in `Reader.apply`.
 
-## Использование
+## Usage
 
-Сборка проекта:
+Build:
 ```
 mvn clean package
 ```
-Запуск приложения:
+Launch:
 ```
 java -jar target/vfq-table-to-html-1.0.0.jar <source-path> <source-encoding>
 ```
-Примеры запуска:
+Examples:
 ```
 java -jar target/vfq-table-to-html-1.0.0.jar data-in-ansi.csv Cp1252
 java -jar target/vfq-table-to-html-1.0.0.jar data-in-utf8.prn UTF-8
 ```
-Если на вход был передан файл **data.csv**, приложение сгенерирует и поместит в ту же директорию файлы:
-- **data.html**
-- **data.css**
-
-## Допущения
-
-Приложение воспринимает все данные как текст и не применяет специального форматирования для различных типов данных.
